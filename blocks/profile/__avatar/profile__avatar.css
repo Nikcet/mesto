@@ -3,3 +3,10 @@
     height: 120px;
     border-radius: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .profile__avatar {
+        margin: 0 auto;
+        margin-bottom: 26px;
+    }
+}

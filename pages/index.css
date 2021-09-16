@@ -20,3 +20,18 @@
 @import url(../blocks/profile/__info-elems/profile__info-elems.css);
 @import url(../blocks/profile/__info-wrap/profile__info-wrap.css);
 /* Конец profile */
+
+/* Начало elements */
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__element/elements__element.css);
+@import url(../blocks/elements/__heart/elements__heart.css);
+@import url(../blocks/elements/__image/elements__image.css);
+@import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/elements/__heart/elements__heart.css);
+@import url(../blocks/elements/__wrap/elements__wrap.css);
+/* Конец elements */
+
+/* Начало footer */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+/* Конец footer */
