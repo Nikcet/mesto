@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mesto</title>
+    <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 
-<body class='page'>
+<body class="page">
     <header class="header">
         <img src="./images/logo.svg" alt="mesto Russia" class="header__logo">
     </header>
@@ -18,7 +18,7 @@
                 <img src="./images/kusto.jpg" alt="Фото: Жак-Ив Кусто" class="profile__avatar">
                 <div class="profile__info">
                     <div class="profile__info-elems">
-                        <h2 class="profile__name">Жак-Ив Кусто</h2>
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
                         <button class="profile__edit-button"></button>
                     </div>
                     <p class="profile__description">Исследователь океана</p>
@@ -30,7 +30,7 @@
             <div class="elements__element">
                 <img src="./images/karachaevsk.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Карачаевск</h3>
+                    <h2 class="elements__name">Карачаевск</h2>
                     <div class="elements__heart"></div>
                 </div>
 
@@ -38,7 +38,7 @@
             <div class="elements__element">
                 <img src="./images/elbrus.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Гора Эльбрус</h3>
+                    <h2 class="elements__name">Гора Эльбрус</h2>
                     <div class="elements__heart"></div>
                 </div>
 
@@ -46,7 +46,7 @@
             <div class="elements__element">
                 <img src="./images/dombay.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Домбай</h3>
+                    <h2 class="elements__name">Домбай</h2>
                     <div class="elements__heart"></div>
                 </div>
 
@@ -54,7 +54,7 @@
             <div class="elements__element">
                 <img src="./images/elbrus.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Гора Эльбрус</h3>
+                    <h2 class="elements__name">Гора Эльбрус</h2>
                     <div class="elements__heart"></div>
                 </div>
 
@@ -62,7 +62,7 @@
             <div class="elements__element">
                 <img src="images/dombay.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Домбай</h3>
+                    <h2 class="elements__name">Домбай</h2>
                     <div class="elements__heart"></div>
                 </div>
 
@@ -70,7 +70,7 @@
             <div class="elements__element">
                 <img src="images/karachaevsk.jpg" alt="" class="elements__image">
                 <div class="elements__wrap">
-                    <h3 class="elements__name">Карачаево-Черкессия</h3>
+                    <h2 class="elements__name">Карачаево-Черкессия</h2>
                     <div class="elements__heart"></div>
                 </div>
             </div>
@@ -79,18 +79,18 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    <aside class="popup popup_opened">
+    <aside class="popup">
         <div class="popup__container">
             <div class="popup__close"></div>
             <h2 class="popup__edit-prof">Редактировать профиль</h2>
-            <form action="" class="popup__form">
-                <input type="text" class='popup__input' placeholder="Жак-Ив кусто">
-                <input type="text" class='popup__input' placeholder="Исследователь океана">
-                <input type="submit" class='popup__submit-btn' value="Сохранить">
+            <form class="popup__form">
+                <input type="text" class="popup__input popup__name" placeholder="Имя">
+                <input type="text" class="popup__input popup__about" placeholder="О себе">
+                <input type="submit" class="popup__submit-btn" value="Сохранить">
             </form>
         </div>
     </aside>
-
+<script src="./scripts/script.js"></script>
 </body>
 
 </html>
