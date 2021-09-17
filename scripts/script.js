@@ -3,7 +3,7 @@ let popupWindow = doc.querySelector('.popup');
 let popupClose = doc.querySelector('.popup__close');
 
 let editButton = doc.querySelector('.profile__edit-button');
-let submitButton = doc.querySelector('.popup__submit-btn');
+let popupForm = doc.querySelector('.popup__form');
 
 let profileName = doc.querySelector('.profile__name');
 let profileDescription = doc.querySelector('.profile__description');
@@ -47,4 +47,4 @@ editButton.addEventListener('click', function () {
 });
 popupClose.addEventListener('click', closePopup);
 
-submitButton.addEventListener('click', formSubmitHandler);
+popupForm.addEventListener('submit', formSubmitHandler);
