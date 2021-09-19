@@ -1,7 +1,10 @@
 .elements__heart {
     background-image: url(../../../images/heart.svg);
+    background-color: #fff;
     width: 22px;
     height: 19px;
+    border: none;
+    outline: none;
 }
 
 .elements__heart:hover {
