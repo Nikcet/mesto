@@ -8,8 +8,8 @@ let popupForm = doc.querySelector('.popup__form');
 let profileName = doc.querySelector('.profile__name');
 let profileDescription = doc.querySelector('.profile__description');
 
-let nameInput = doc.querySelector('.popup__name');
-let aboutInput = doc.querySelector('.popup__about');
+let nameInput = doc.querySelector('#popup__name');
+let aboutInput = doc.querySelector('#popup__about');
 
 
 function openPopup() {
@@ -41,10 +41,11 @@ function formSubmitHandler(event) {
 }
 
 
+popupClose.addEventListener('click', closePopup);
+
+popupForm.addEventListener('submit', formSubmitHandler);
+
 editButton.addEventListener('click', function () {
     openPopup();
     setPopupFormFromProfile();
 });
-popupClose.addEventListener('click', closePopup);
-
-popupForm.addEventListener('submit', formSubmitHandler);
