@@ -33,7 +33,7 @@
                 <img src="./images/karachaevsk.jpg" alt="Фото: Карачаевск" class="elements__image">
                 <div class="elements__wrap">
                     <h2 class="elements__name">Карачаевск</h2>
-                    <button type="button" class="elements__heart"></button>
+                    <button type="button" class="elements__heart" aria-label="Нравится"></button>
                 </div>
 
             </div>
@@ -83,11 +83,11 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button type="button" class="popup__close"></button>
+            <button type="button" class="popup__close" aria-label="Закрыть"></button>
             <h2 class="popup__edit-prof">Редактировать профиль</h2>
             <form class="popup__form" name="popup">
-                <input type="text" id="popup__name" class="popup__input" placeholder="Имя">
-                <input type="text" id="popup__about" class="popup__input" placeholder="О себе">
+                <input type="text" id="popup__name" class="popup__input" placeholder="Имя" name="popup__name">
+                <input type="text" id="popup__about" class="popup__input" placeholder="О себе" name="popup__about">
                 <button type="submit" class="popup__submit-btn">Сохранить</button>
             </form>
         </div>
