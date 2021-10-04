@@ -29,53 +29,6 @@
             <button class="profile__add-button" type="button" aria-label="Добавить карточку"></button>
         </section>
         <section class="elements">
-            <!-- <div class="elements__card">
-                <img src="./images/karachaevsk.jpg" alt="Фото: Карачаевск" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Карачаевск</h2>
-                    <button type="button" class="elements__heart" aria-label="Нравится"></button>
-                </div>
-
-            </div>
-            <div class="elements__card">
-                <img src="./images/elbrus.jpg" alt="Фото: Эльбрус" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Гора Эльбрус</h2>
-                    <button type="button" class="elements__heart"></button>
-                </div>
-
-            </div>
-            <div class="elements__card">
-                <img src="./images/dombay.jpg" alt="Фото: Домбай" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Домбай</h2>
-                    <button type="button" class="elements__heart"></button>
-                </div>
-
-            </div>
-            <div class="elements__card">
-                <img src="./images/elbrus.jpg" alt="Фото: Эльбрус" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Гора Эльбрус</h2>
-                    <button type="button" class="elements__heart"></button>
-                </div>
-
-            </div>
-            <div class="elements__card">
-                <img src="images/dombay.jpg" alt="Фото: Домбай" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Домбай</h2>
-                    <button type="button" class="elements__heart"></button>
-                </div>
-
-            </div>
-            <div class="elements__card">
-                <img src="images/karachaevsk.jpg" alt="Фото: Карачаевск" class="elements__image">
-                <div class="elements__wrap">
-                    <h2 class="elements__name">Карачаево-Черкессия</h2>
-                    <button type="button" class="elements__heart"></button>
-                </div>
-            </div> -->
             <template class="elements__template">
                 <div class="elements__card">
                     <img src="" alt="" class="elements__image">
@@ -84,13 +37,6 @@
                         <h2 class="elements__name"></h2>
                         <button type="button" class="elements__heart"></button>
                     </div>
-                </div>
-            </template>
-            <template class="image-popup">
-                <div class="image-popup">
-                    <img src="" alt="" class="image-popup__image">
-                    <p class="image-popup__description"></p>
-                    <button class="image-popup__close-btn"></button>
                 </div>
             </template>
         </section>
@@ -115,9 +61,17 @@
             <h2 class="popup__edit-prof">Новое место</h2>
             <form action="" class="popup__form">
                 <input type="text" id="popup__title" class="popup__input" placeholder="Название" name="popup__name">
-                <input type="text" id="popup__pic-link" class="popup__input" placeholder="Ссылка на картинку" name="popup__about">
+                <input type="text" id="popup__pic-link" class="popup__input" placeholder="Ссылка на картинку"
+                    name="popup__about">
                 <button type="submit" class="popup__submit-btn">Сохранить</button>
             </form>
+        </div>
+    </div>
+    <div id='popupImage' class="image-popup">
+        <div class="image-popup__wrap">
+            <img src="" alt="" class="image-popup__image">
+            <p class="image-popup__description"></p>
+            <button class="image-popup__close-btn"></button>
         </div>
     </div>
     <script src="./scripts/script.js"></script>

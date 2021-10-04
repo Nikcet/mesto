@@ -37,6 +37,14 @@
 @import url(../blocks/elements/__wrap/elements__wrap.css);
 /* Конец elements */
 
+/* Начало image-popup */
+@import url(../blocks/image-popup/image-popup.css);
+@import url(../blocks/image-popup/__image/image-popup__image.css);
+@import url(../blocks/image-popup/__description/image-popup__description.css);
+@import url(../blocks/image-popup/__close-btn/image-popup__close-btn.css);
+@import url(../blocks/image-popup/__wrap/image-popup__wrap.css);
+/* Конец image-popup */
+
 /* Начало edit-form */
 
 @import url(../blocks/popup/popup.css);
