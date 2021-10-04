@@ -68,7 +68,27 @@ function addCard(name, image) {
     cardTemplate.querySelector('.elements__delete').addEventListener('click', function (event) {
         event.target.closest('.elements__card').remove();
     })
+
+    // Слушаем изображение на клики и запускаем открытие попапа
+    cardTemplate.querySelector('.elements__image').addEventListener('click', function (event) {
+        const popupImage = doc.querySelector('#popupImage');
+        openImagePopup(event.target, popupImage);
+    })
+
     elems.prepend(cardTemplate);
+}
+
+// Передаем все данные в попап изображения и являем народу
+function openImagePopup(targetImage, popupImage) {
+    popupImage.querySelector('.image-popup__image').src = targetImage.src;
+    popupImage.querySelector('.image-popup__image').alt = targetImage.alt;
+    popupImage.querySelector('.image-popup__description').textContent = targetImage.alt;
+
+    openPopup(popupImage);
+
+    popupImage.querySelector('.image-popup__close-btn').addEventListener('click', function () {
+        closePopup(popupImage);
+    })
 }
 
 function openPopup(object) {
@@ -79,8 +99,6 @@ function closePopup() {
     const activeModal = doc.querySelector('.popup_opened');
     if (activeModal) {
         activeModal.classList.remove('popup_opened');
-    } else {
-        console.log(activeModal);
     }
 }
 
