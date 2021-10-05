@@ -43,19 +43,23 @@ const initialCards = [
     }
 ];
 
-
+// Создает 6 карточек
 function initializeCards() {
     for (let i = 0; i < initialCards.length; i++) {
         addCard(initialCards[i].name, initialCards[i].link);
     }
 }
 
+// Добавляет новую карточку
 function addCard(name, image) {
+    // Копирует шаблон разметки
     const cardTemplate = doc.querySelector('.elements__template').content.cloneNode(true);
+    // Заполняет шаблон данными
     cardTemplate.querySelector('.elements__image').src = image;
     cardTemplate.querySelector('.elements__image').alt = name;
     cardTemplate.querySelector('.elements__name').textContent = name;
 
+    // Лайк
     cardTemplate.querySelector('.elements__heart').addEventListener('click', function (event) {
         const likeButton = event.target;
         if (likeButton.classList.contains('elements__heart_active')) {
@@ -65,20 +69,22 @@ function addCard(name, image) {
         }
     });
 
+    // Удаление
     cardTemplate.querySelector('.elements__delete').addEventListener('click', function (event) {
         event.target.closest('.elements__card').remove();
     })
 
-    // Слушаем изображение на клики и запускаем открытие попапа
+    // Попап изображения
     cardTemplate.querySelector('.elements__image').addEventListener('click', function (event) {
         const popupImage = doc.querySelector('#popupImage');
         openImagePopup(event.target, popupImage);
     })
 
+    // В начало списка добавляется готовая карточка
     elems.prepend(cardTemplate);
 }
 
-// Передаем все данные в попап изображения и являем народу
+// Открывает попап с изображением
 function openImagePopup(targetImage, popupImage) {
     popupImage.querySelector('.image-popup__image').src = targetImage.src;
     popupImage.querySelector('.image-popup__image').alt = targetImage.alt;
@@ -86,15 +92,18 @@ function openImagePopup(targetImage, popupImage) {
 
     openPopup(popupImage);
 
+    // Кнопка закрытия попапа
     popupImage.querySelector('.image-popup__close-btn').addEventListener('click', function () {
         closePopup(popupImage);
     })
 }
 
+// Открывает попап
 function openPopup(object) {
     object.classList.add('popup_opened');
 }
 
+// Закрывает попап
 function closePopup() {
     const activeModal = doc.querySelector('.popup_opened');
     if (activeModal) {
@@ -102,47 +111,54 @@ function closePopup() {
     }
 }
 
+// Заполняет поля формы данными из профиля
 function setPopupFormFromProfile() {
     nameInput.value = profileName.textContent;
     aboutInput.value = profileDescription.textContent;
 }
 
+// Сохраняет данные из формы в профиль
 function saveInfoFromEditPopup() {
     profileName.textContent = nameInput.value;
     profileDescription.textContent = aboutInput.value;
 }
 
+// Сохраняет данные из формы добавления карточки и начинает процесс добавления
 function saveInfoFromAddPopup() {
     const popupTitle = doc.querySelector('#popup__title');
     const popupPicLink = doc.querySelector('#popup__pic-link');
     addCard(popupTitle.value, popupPicLink.value);
 }
 
-
+// Кнопка сохранения данных в профиль
 editWindow.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromEditPopup();
     closePopup();
 });
 
+// Кнопка сохранения данных для новой карточки
 addWindow.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromAddPopup();
     closePopup();
 });
 
+// Кнопка редактирования данных формы
 editButton.addEventListener('click', function () {
     openPopup(editWindow);
     setPopupFormFromProfile();
 });
 
+// Кнопка добаления новых карточек
 addButton.addEventListener('click', function () {
     openPopup(addWindow);
 })
 
+// Находит все кнопки закрытия форм и вешает на них закрывалку
 for (let i = 0; i < popupClose.length; i++) {
     popupClose[i].addEventListener('click', closePopup);
 }
 
-
+// Собирает карточки
 initializeCards();
