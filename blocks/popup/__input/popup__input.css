@@ -16,22 +16,22 @@
 }
 
 .popup__input::-webkit-input-placeholder {
-    color: #000;
+    color: #C4C4C4;
     opacity: 1;
 }
 .popup__input::-moz-placeholder {
-    color: #000;
+    color: #C4C4C4;
     opacity: 1;
 }
 .popup__input:-ms-input-placeholder {
-    color: #000;
+    color: #C4C4C4;
     opacity: 1;
 }
 .popup__input::-ms-input-placeholder {
-    color: #000;
+    color: #C4C4C4;
     opacity: 1;
 }
 .popup__input::placeholder {
-    color: #000;
+    color: #C4C4C4;
     opacity: 1;
 }
