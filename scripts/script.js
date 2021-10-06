@@ -80,10 +80,7 @@ function openPopup(popup) {
 
 // Закрывает попап
 function closePopup(activeModal) {
-    const popup = activeModal.closest('.popup_opened');
-    if (popup) {
-        popup.classList.remove('popup_opened');
-    }
+    activeModal.closest('.popup_opened').classList.remove('popup_opened');
 }
 
 // Заполняет поля формы данными из профиля
