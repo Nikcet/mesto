@@ -1,8 +1,8 @@
 import { initialCardsDatas } from './initialCards.js';
 
 const doc = document.querySelector('.page');
-const editWindow = doc.querySelector('#edit-prof');
-const addWindow = doc.querySelector('#add-card');
+const popupEditProfile = doc.querySelector('#edit-prof');
+const popupAddCard = doc.querySelector('#add-card');
 const popupCloseButtons = doc.querySelectorAll('.popup__close');
 const editButton = doc.querySelector('.profile__edit-button');
 
@@ -27,7 +27,7 @@ const initialCardsData = initialCardsDatas();
 
 // Создает 6 карточек
 initialCardsData.forEach(function (item) {
-    createCard(item.name, item.link);
+    addCard(item.name, item.link);
 });
 
 // Создает карточку
@@ -56,11 +56,12 @@ function createCard(name, image) {
         openImagePopup(event.target);
     })
 
-    addCard(cardTemplate);
+    return cardTemplate;
 }
 
 // Добавляет карточку
-function addCard(card) {
+function addCard(name, image) {
+    const card = createCard(name, image)
     // В начало списка добавляется готовая карточка
     elems.prepend(card);
 }
@@ -98,32 +99,32 @@ function saveInfoFromEditPopup() {
 
 // Сохраняет данные из формы добавления карточки и начинает процесс добавления
 function saveInfoFromAddPopup() {
-    createCard(inputCardName.value, inputCardLink.value);
+    addCard(inputCardName.value, inputCardLink.value);
 }
 
 // Кнопка сохранения данных в профиль
-editWindow.addEventListener('submit', function (event) {
+popupEditProfile.addEventListener('submit', function () {
     event.preventDefault();
     saveInfoFromEditPopup();
-    closePopup(event.target.closest('.popup_opened'));
+    closePopup(popupEditProfile);
 });
 
 // Кнопка сохранения данных для новой карточки
-addWindow.addEventListener('submit', function (event) {
+popupAddCard.addEventListener('submit', function () {
     event.preventDefault();
     saveInfoFromAddPopup();
-    closePopup(event.target.closest('.popup_opened'));
+    closePopup(popupAddCard);
 });
 
 // Кнопка редактирования данных формы
 editButton.addEventListener('click', function () {
-    openPopup(editWindow);
+    openPopup(popupEditProfile);
     fillInUserInputs();
 });
 
 // Кнопка добаления новых карточек
 addButton.addEventListener('click', function () {
-    openPopup(addWindow);
+    openPopup(popupAddCard);
 })
 
 popupCloseButtons.forEach(function (item) {
