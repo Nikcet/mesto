@@ -110,7 +110,7 @@ popupEditProfile.addEventListener('submit', function () {
 });
 
 // Кнопка сохранения данных для новой карточки
-popupAddCard.addEventListener('submit', function () {
+popupAddCard.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromAddPopup();
     closePopup(popupAddCard);
