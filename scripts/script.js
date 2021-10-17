@@ -103,7 +103,7 @@ function saveInfoFromAddPopup() {
 }
 
 // Кнопка сохранения данных в профиль
-popupEditProfile.addEventListener('submit', function () {
+popupEditProfile.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromEditPopup();
     closePopup(popupEditProfile);
