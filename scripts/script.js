@@ -25,6 +25,8 @@ const inputCardLink = doc.querySelector('#popup__pic-link');
 
 const initialCardsData = initialCardsDatas();
 
+const popupList = doc.querySelectorAll('.popup');
+
 // Создает 6 карточек
 initialCardsData.forEach(function (item) {
     addCard(item.name, item.link);
@@ -127,8 +129,18 @@ addButton.addEventListener('click', function () {
     openPopup(popupAddCard);
 })
 
+// Вешает слушатели на все кнопки закрытия попапов
 popupCloseButtons.forEach(function (item) {
     item.addEventListener('click', function (event) {
         closePopup(event.target.closest('.popup_opened'));
+    })
+})
+
+// Закрывает попапы, если нажать на оверлей
+popupList.forEach((popupItem) => {
+    popupItem.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup_opened')){
+            closePopup(popupItem);
+        }
     })
 })
