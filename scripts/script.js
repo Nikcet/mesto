@@ -146,8 +146,8 @@ editButton.addEventListener('click', function () {
 
 // Кнопка добаления новых карточек
 addButton.addEventListener('click', function () {
-    openPopup(popupAddCard);
     clearDatasFromPopup(popupAddCard);
+    openPopup(popupAddCard);
 });
 
 // Вешает слушатели на все кнопки закрытия попапов
