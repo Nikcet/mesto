@@ -25,6 +25,9 @@ const inputCardLink = doc.querySelector('#popup__pic-link');
 
 const initialCardsData = initialCardsDatas();
 
+const popupList = doc.querySelectorAll('.popup');
+let popupOpened = false;
+
 // Создает 6 карточек
 initialCardsData.forEach(function (item) {
     addCard(item.name, item.link);
@@ -57,14 +60,14 @@ function createCard(name, image) {
     })
 
     return cardTemplate;
-}
+};
 
 // Добавляет карточку
 function addCard(name, image) {
     const card = createCard(name, image)
     // В начало списка добавляется готовая карточка
     elems.prepend(card);
-}
+};
 
 // Открывает попап с изображением
 function openImagePopup(targetImage) {
@@ -73,44 +76,63 @@ function openImagePopup(targetImage) {
     descrPopup.textContent = targetImage.alt;
 
     openPopup(popupImage);
-}
+};
 
 // Открывает попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-}
+    popupOpened = true;
+};
 
 // Закрывает попап
 function closePopup(activeModal) {
     activeModal.classList.remove('popup_opened');
-}
+    popupOpened = false;
+};
 
 // Заполняет поля формы данными из профиля
 function fillInUserInputs() {
     nameInput.value = profileName.textContent;
     aboutInput.value = profileDescription.textContent;
-}
+};
 
 // Сохраняет данные из формы в профиль
 function saveInfoFromEditPopup() {
     profileName.textContent = nameInput.value;
     profileDescription.textContent = aboutInput.value;
-}
+};
 
 // Сохраняет данные из формы добавления карточки и начинает процесс добавления
 function saveInfoFromAddPopup() {
     addCard(inputCardName.value, inputCardLink.value);
+};
+
+// Функция закрытия попапов по нажатию на клавишу esc
+function exitPopupByKey() {
+    doc.addEventListener('keydown', function (event) {
+        if (popupOpened && event.key == 'Escape') {
+            closePopup(doc.querySelector('.popup_opened'));
+        }
+    });
+};
+
+// Очищает форму добавления карточки во время ее открытия
+function clearDatasFromPopup(form) {
+    const inputList = form.querySelectorAll('.popup__input');
+    inputList.forEach(function (inputItem) {
+        inputItem.value = '';
+    })
 }
 
 // Кнопка сохранения данных в профиль
-popupEditProfile.addEventListener('submit', function () {
+popupEditProfile.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromEditPopup();
     closePopup(popupEditProfile);
 });
 
 // Кнопка сохранения данных для новой карточки
-popupAddCard.addEventListener('submit', function () {
+popupAddCard.addEventListener('submit', function (event) {
     event.preventDefault();
     saveInfoFromAddPopup();
     closePopup(popupAddCard);
@@ -124,11 +146,24 @@ editButton.addEventListener('click', function () {
 
 // Кнопка добаления новых карточек
 addButton.addEventListener('click', function () {
+    clearDatasFromPopup(popupAddCard);
     openPopup(popupAddCard);
-})
+});
 
+// Вешает слушатели на все кнопки закрытия попапов
 popupCloseButtons.forEach(function (item) {
     item.addEventListener('click', function (event) {
         closePopup(event.target.closest('.popup_opened'));
-    })
-})
+    });
+});
+
+// Закрывает попапы, если нажать на оверлей
+popupList.forEach((popupItem) => {
+    popupItem.addEventListener('click', (event) => {
+        if (event.target.classList.contains('popup_opened')) {
+            closePopup(popupItem);
+        };
+    });
+});
+
+exitPopupByKey();
