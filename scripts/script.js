@@ -1,4 +1,4 @@
-import { initialCardsDatas } from './initialCards.js';
+import { initialCards } from './initialCards.js';
 
 const doc = document.querySelector('.page');
 const popupEditProfile = doc.querySelector('#edit-prof');
@@ -23,13 +23,12 @@ const elems = doc.querySelector('.elements');
 const inputCardName = doc.querySelector('#popup__title');
 const inputCardLink = doc.querySelector('#popup__pic-link');
 
-const initialCardsData = initialCardsDatas();
-
 const popupList = doc.querySelectorAll('.popup');
-let popupOpened = false;
+
+const ESC_CODE = 'Escape';
 
 // Создает 6 карточек
-initialCardsData.forEach(function (item) {
+initialCards.forEach(function (item) {
     addCard(item.name, item.link);
 });
 
@@ -81,13 +80,15 @@ function openImagePopup(targetImage) {
 // Открывает попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popupOpened = true;
+    // Добавляет слушатель событый для кливиши Esc
+    doc.addEventListener('keydown', closeByEsc);
 };
 
 // Закрывает попап
 function closePopup(activeModal) {
     activeModal.classList.remove('popup_opened');
-    popupOpened = false;
+    // Удаляет слушатель событый для кливиши Esc
+    doc.removeEventListener('keydown', closeByEsc);
 };
 
 // Заполняет поля формы данными из профиля
@@ -108,13 +109,12 @@ function saveInfoFromAddPopup() {
 };
 
 // Функция закрытия попапов по нажатию на клавишу esc
-function exitPopupByKey() {
-    doc.addEventListener('keydown', function (event) {
-        if (popupOpened && event.key == 'Escape') {
-            closePopup(doc.querySelector('.popup_opened'));
-        }
-    });
-};
+function closeByEsc(event) {
+    if (event.key === ESC_CODE) {
+        const openedPopup = doc.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
 
 // Очищает форму добавления карточки во время ее открытия
 function clearDatasFromPopup(form) {
@@ -148,7 +148,16 @@ editButton.addEventListener('click', function () {
 addButton.addEventListener('click', function () {
     clearDatasFromPopup(popupAddCard);
     openPopup(popupAddCard);
+    toggleButtonState(popupAddCard);
 });
+
+// Переключение состояния кнопки
+function toggleButtonState(popup) {
+    const button = popup.querySelector('.popup__submit-btn');
+
+    button.disabled = true;
+    button.classList.add('popup__submit-btn_disabled');
+}
 
 // Вешает слушатели на все кнопки закрытия попапов
 popupCloseButtons.forEach(function (item) {
@@ -165,5 +174,3 @@ popupList.forEach((popupItem) => {
         };
     });
 });
-
-exitPopupByKey();
