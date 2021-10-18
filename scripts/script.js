@@ -1,4 +1,4 @@
-import { initialCardsDatas } from './initialCards.js';
+import { initialCards } from './initialCards.js';
 
 const doc = document.querySelector('.page');
 const popupEditProfile = doc.querySelector('#edit-prof');
@@ -23,13 +23,11 @@ const elems = doc.querySelector('.elements');
 const inputCardName = doc.querySelector('#popup__title');
 const inputCardLink = doc.querySelector('#popup__pic-link');
 
-const initialCardsData = initialCardsDatas();
-
 const popupList = doc.querySelectorAll('.popup');
 let popupOpened = false;
 
 // Создает 6 карточек
-initialCardsData.forEach(function (item) {
+initialCards.forEach(function (item) {
     addCard(item.name, item.link);
 });
 
