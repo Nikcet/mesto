@@ -26,6 +26,8 @@ const inputCardLink = doc.querySelector('#popup__pic-link');
 const popupList = doc.querySelectorAll('.popup');
 let popupOpened = false;
 
+const ESC_CODE = 'Escape';
+
 // Создает 6 карточек
 initialCards.forEach(function (item) {
     addCard(item.name, item.link);
@@ -79,13 +81,15 @@ function openImagePopup(targetImage) {
 // Открывает попап
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popupOpened = true;
+    // Добавляет слушатель событый для кливиши Esc
+    doc.addEventListener('keydown', closeByEsc);
 };
 
 // Закрывает попап
 function closePopup(activeModal) {
     activeModal.classList.remove('popup_opened');
-    popupOpened = false;
+    // Удаляет слушатель событый для кливиши Esc
+    doc.removeEventListener('keydown', closeByEsc);
 };
 
 // Заполняет поля формы данными из профиля
@@ -106,13 +110,12 @@ function saveInfoFromAddPopup() {
 };
 
 // Функция закрытия попапов по нажатию на клавишу esc
-function exitPopupByKey() {
-    doc.addEventListener('keydown', function (event) {
-        if (popupOpened && event.key == 'Escape') {
-            closePopup(doc.querySelector('.popup_opened'));
-        }
-    });
-};
+function closeByEsc(event) {
+    if (event.key === ESC_CODE) {
+        const openedPopup = doc.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
 
 // Очищает форму добавления карточки во время ее открытия
 function clearDatasFromPopup(form) {
@@ -163,5 +166,3 @@ popupList.forEach((popupItem) => {
         };
     });
 });
-
-exitPopupByKey();
