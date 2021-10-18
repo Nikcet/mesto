@@ -24,7 +24,6 @@ const inputCardName = doc.querySelector('#popup__title');
 const inputCardLink = doc.querySelector('#popup__pic-link');
 
 const popupList = doc.querySelectorAll('.popup');
-let popupOpened = false;
 
 const ESC_CODE = 'Escape';
 
@@ -149,7 +148,16 @@ editButton.addEventListener('click', function () {
 addButton.addEventListener('click', function () {
     clearDatasFromPopup(popupAddCard);
     openPopup(popupAddCard);
+    toggleButtonState(popupAddCard);
 });
+
+// Переключение состояния кнопки
+function toggleButtonState(popup) {
+    const button = popup.querySelector('.popup__submit-btn');
+
+    button.disabled = true;
+    button.classList.add('popup__submit-btn_disabled');
+}
 
 // Вешает слушатели на все кнопки закрытия попапов
 popupCloseButtons.forEach(function (item) {
