@@ -39,10 +39,8 @@ function addCard(item) {
 editButton.addEventListener('click', () => {
     openPopup(popupEditProfile);
     fillInUserInputs();
-    // Создает валидатор данных формы
-    const validator = new FormValidator(validationConfig, popupEditProfile);
-    // Включает валидацию
-    validator.enableValidation(popupEditProfile.querySelector('.popup__form'));
+    // Создает и запускает валидатор данных формы
+    new FormValidator(validationConfig, popupEditProfile);
 });
 
 // Заполняет поля формы данными из профиля
@@ -56,10 +54,8 @@ addButton.addEventListener('click', function () {
     clearDatasFromPopup(popupAddCard);
     openPopup(popupAddCard);
     toggleButtonState(popupAddCard);
-    // Создает валидатор данных формы
-    const validator = new FormValidator(validationConfig, popupAddCard);
-    // Включает валидацию
-    validator.enableValidation(popupAddCard.querySelector('.popup__form'));
+    // Создает и запускает валидатор данных формы
+    new FormValidator(validationConfig, popupAddCard);
 });
 
 // Очищает форму добавления карточки во время ее открытия
