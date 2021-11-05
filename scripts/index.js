@@ -23,6 +23,8 @@ const popupList = document.querySelectorAll('.popup');
 
 const ESC_CODE = 'Escape';
 
+const validationProfile = new FormValidator(validationConfig, popupEditProfile);
+const validationAddCard = new FormValidator(validationConfig, popupAddCard);
 
 // Создает 6 карточек
 initialCards.forEach(function (item) {
@@ -39,8 +41,8 @@ function addCard(item) {
 editButton.addEventListener('click', () => {
     openPopup(popupEditProfile);
     fillInUserInputs();
-    // Создает и запускает валидатор данных формы
-    new FormValidator(validationConfig, popupEditProfile);
+    // Запускает валидатор данных формы
+    validationProfile.enableValidation();
 });
 
 // Заполняет поля формы данными из профиля
@@ -54,8 +56,8 @@ addButton.addEventListener('click', function () {
     clearDatasFromPopup(popupAddCard);
     openPopup(popupAddCard);
     toggleButtonState(popupAddCard);
-    // Создает и запускает валидатор данных формы
-    new FormValidator(validationConfig, popupAddCard);
+    // Запускает валидатор данных формы
+    validationAddCard.enableValidation();
 });
 
 // Очищает форму добавления карточки во время ее открытия

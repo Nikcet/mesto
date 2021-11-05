@@ -2,7 +2,6 @@ export class FormValidator {
     constructor(config, form) {
         this.config = config;
         this.form = form;
-        this.enableValidation();
     }
 
     // Запускает процесс валидации форм
@@ -18,11 +17,11 @@ export class FormValidator {
         const inputList = Array.from(this.form.querySelectorAll(this.config.inputSelector));
         const buttonElement = this.form.querySelector(this.config.submitButtonSelector);
 
-        this._toggleButtonState(inputList, buttonElement, this.config);
+        this._toggleButtonState(inputList, buttonElement);
         inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                this._isValid(this.form, inputElement, this.config);
-                this._toggleButtonState(inputList, buttonElement, this.config);
+                this._isValid(inputElement);
+                this._toggleButtonState(inputList, buttonElement);
             })
         })
     };
@@ -48,9 +47,9 @@ export class FormValidator {
     // Проверяет поле на валидность
     _isValid = (inputElement) => {
         if (!inputElement.validity.valid) {
-            this._showInputError(this.form, inputElement, inputElement.validationMessage, this.config);
+            this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-            this._hideInputError(this.form, inputElement, this.config);
+            this._hideInputError(inputElement);
         }
     };
 
