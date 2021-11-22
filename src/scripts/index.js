@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import initialCards from './initialCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
@@ -6,6 +7,7 @@ import Section from './Section.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js'
 import UserInfo from './UserInfo.js';
+import LocalImages from './LocalImages.js';
 import {
     elems,
     editButton,
@@ -106,3 +108,5 @@ function toggleButtonState(popup) {
     button.disabled = true;
     button.classList.add('popup__submit-btn_disabled');
 }
+
+new LocalImages();
