@@ -12,6 +12,8 @@ const profileDescription = document.querySelector('.profile__description');
 const nameInput = document.querySelector('#popup__name');
 const descriptionInput = document.querySelector('#popup__about');
 
+const popupImage = document.querySelector('#popupImage')
+
 const formQuerySelector = '.popup__form';
 const inputQuerySelector = '.popup__input';
 
@@ -55,4 +57,5 @@ export {
     imageQuerySelector,
     elementsImageQuerySelector,
     elementsNameQuerySelector,
+    popupImage,
 };
