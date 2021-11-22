@@ -1,13 +1,13 @@
-import '../pages/index.css';
-import initialCards from './initialCards.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import validationConfig from './validationConfig.js';
-import Section from './Section.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js'
-import UserInfo from './UserInfo.js';
-import LocalImages from './LocalImages.js';
+import './index.css';
+import initialCards from '../scripts/initialCards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import validationConfig from '../scripts/validationConfig.js';
+import Section from '../components/Section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js'
+import UserInfo from '../components/UserInfo.js';
+import LocalImages from '../scripts/LocalImages.js';
 import {
     elems,
     editButton,
@@ -21,7 +21,7 @@ import {
     popupImageIdSelector,
     imagePopupQuerySelector,
     descriptionPopupSelector,
-} from './constants.js';
+} from '../scripts/constants.js';
 
 
 const validationProfileForm = new FormValidator(validationConfig, popupEditProfile);
@@ -109,4 +109,5 @@ function toggleButtonState(popup) {
     button.classList.add('popup__submit-btn_disabled');
 }
 
+// Вставляет локальные изображения в DOM
 new LocalImages();

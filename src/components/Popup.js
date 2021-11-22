@@ -1,4 +1,4 @@
-import { KEY_CODE, popupOpenedClassSelector, popupCloseQuerySelector } from './constants.js';
+import { KEY_CODE, popupOpenedClassSelector, popupCloseQuerySelector } from '../scripts/constants.js';
 
 export default class Popup {
     constructor(popupSelector) {

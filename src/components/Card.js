@@ -4,7 +4,7 @@ import {
     imageQuerySelector,
     elementsImageQuerySelector,
     elementsNameQuerySelector,
-} from './constants.js';
+} from '../scripts/constants.js';
 
 class Card {
     constructor({ item, handleCardClick }, templateSelector) {

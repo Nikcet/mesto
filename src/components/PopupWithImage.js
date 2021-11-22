@@ -1,5 +1,5 @@
 import Popup from './Popup.js';
-import { popupImageIdSelector } from './constants.js';
+import { popupImageIdSelector } from '../scripts/constants.js';
 
 class PopupWithImage extends Popup {
     // Вообще весь не нужен
