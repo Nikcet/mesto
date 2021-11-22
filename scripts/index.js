@@ -17,7 +17,7 @@ import {
     nameInput,
     descriptionInput,
     popupImageIdSelector,
-    imagePopupSelector,
+    imagePopupQuerySelector,
     descriptionPopupSelector,
 } from './constants.js';
 
@@ -73,10 +73,10 @@ addButton.addEventListener('click', () => {
 });
 
 
-// Заполняет попап картинки данными
+// Колбек класса попапа с картинкой - заполняет попап картинки данными
 function handleCardClick(data) {
     const popupSelector = document.querySelector(popupImageIdSelector);
-    const imageElementPopup = popupSelector.querySelector(imagePopupSelector);
+    const imageElementPopup = popupSelector.querySelector(imagePopupQuerySelector);
     const descrPopup = popupSelector.querySelector(descriptionPopupSelector);
     imageElementPopup.src = data.link;
     imageElementPopup.alt = data.name;
