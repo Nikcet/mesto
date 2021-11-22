@@ -18,26 +18,26 @@ import {
     profileDescription,
     nameInput,
     descriptionInput,
-    popupImageIdSelector,
-    imagePopupQuerySelector,
-    descriptionPopupSelector,
+    popupImage,
 } from '../scripts/constants.js';
 
-
+// Формы
 const validationProfileForm = new FormValidator(validationConfig, popupEditProfile);
 const validationAddCardForm = new FormValidator(validationConfig, popupAddCard);
 
+// Разметка и отрисовка дефолтных карточек
 const section = new Section(initialCards, renderer, elems);
 section.renderItems();
 
+// Попапы и их слушатели
 const editProfilePopup = new PopupWithForm(popupEditProfile, profileFormSubmit);
-const addCardPopup = new PopupWithForm(popupAddCard, cardFormSubmit);
-const imagePopup = new PopupWithImage(document.querySelector(popupImageIdSelector));
-
 editProfilePopup.setEventListeners();
+const addCardPopup = new PopupWithForm(popupAddCard, cardFormSubmit);
 addCardPopup.setEventListeners();
-imagePopup.setEventListeners();
+const imageModalWindow = new PopupWithImage(popupImage);
+imageModalWindow.setEventListeners();
 
+// Управление информацией профиля
 const userInfo = new UserInfo(profileName, profileDescription);
 
 // Колбек формы редактирования профиля
@@ -55,58 +55,30 @@ function createCard(item) {
     return new Card({ item, handleCardClick }, elems).createCard();
 };
 
-// Кнопка редактирования данных формы
+// Кнопка редактирования профиля
 editButton.addEventListener('click', () => {
     editProfilePopup.open();
     let data = userInfo.getUserInfo();
     nameInput.value = data.name;
     descriptionInput.value = data.description;
-
-    // Запускает валидатор данных формы
     validationProfileForm.enableValidation();
 });
 
 // Кнопка добаления новых карточек
 addButton.addEventListener('click', () => {
     addCardPopup.open();
-    toggleButtonState(popupAddCard);
-    // Запускает валидатор данных формы
     validationAddCardForm.enableValidation();
 });
 
-
-// Колбек класса попапа с картинкой - заполняет попап картинки данными
+// Колбэк класса попапа с картинкой - открывает модальное окно с изображением
 function handleCardClick(data) {
-    const popupSelector = document.querySelector(popupImageIdSelector);
-    const imageElementPopup = popupSelector.querySelector(imagePopupQuerySelector);
-    const descrPopup = popupSelector.querySelector(descriptionPopupSelector);
-    imageElementPopup.src = data.link;
-    imageElementPopup.alt = data.name;
-    descrPopup.textContent = data.name;
-
-    imagePopup.open();
+    imageModalWindow.open(data);
 }
 
 // Рисует карточку в DOMе
 function renderer(item) {
     let card = createCard(item);
     section.addItem(card);
-}
-
-// ИЗМЕНИТЬ !!!!!Очищает форму добавления карточки во время ее открытия!!!!!
-function clearDatasFromPopup(form) {
-    const inputList = form.querySelectorAll('.popup__input');
-    inputList.forEach(function (inputItem) {
-        inputItem.value = '';
-    })
-}
-
-// ИЗМЕНИТЬ !!!!!Переключение состояния кнопки!!!!!
-function toggleButtonState(popup) {
-    const button = popup.querySelector('.popup__submit-btn');
-
-    button.disabled = true;
-    button.classList.add('popup__submit-btn_disabled');
 }
 
 // Вставляет локальные изображения в DOM
