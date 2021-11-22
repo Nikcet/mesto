@@ -68,12 +68,12 @@
             <h2 class="popup__edit-prof">Новое место</h2>
             <form class="popup__form" name='popup-add-card' novalidate>
 
-                <input type="text" id="popup__title" class="popup__input" placeholder="Название" name="popup__name"
+                <input type="text" id="popup__title" class="popup__input" placeholder="Название" name="name"
                     minlength="2" maxlength="30" required>
                 <span class="popup__form-error popup__title-error"></span>
 
                 <input type="url" id="popup__pic-link" class="popup__input" placeholder="Ссылка на картинку"
-                    name="popup__about" required>
+                    name="link" required>
                 <span class="popup__form-error popup__pic-link-error"></span>
 
                 <button type="submit" class="popup__submit-btn">Сохранить</button>
@@ -87,7 +87,6 @@
             <button class="image-popup__close-btn popup__close" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
-    <script src="./scripts/Card.js" type="module"></script>
     <script src="./scripts/FormValidator.js" type="module"></script>
     <script src="./scripts/index.js" type="module"></script>
 </body>
