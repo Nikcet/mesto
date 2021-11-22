@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
     <header class="header">
         <a href="./index.html" class="header__logo-link">
-            <img src="./images/logo.svg" alt="Логотип: Место" class="header__logo">
+            <img src="#" alt="#" class="header__logo">
         </a>
     </header>
     <main>
         <section class="profile">
             <div class="profile__info-wrap">
-                <img src="./images/kusto.jpg" alt="Фото: Жак-Ив Кусто" class="profile__avatar">
+                <img src="#" alt="#" class="profile__avatar">
                 <div class="profile__info">
                     <div class="profile__info-elems">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -50,11 +49,11 @@
             <h2 class="popup__edit-prof">Редактировать профиль</h2>
             <form class="popup__form" name="popup-edit-prof" novalidate>
 
-                <input type="text" id="popup__name" class="popup__input" placeholder="Имя" name="popup__name"
+                <input type="text" id="popup__name" class="popup__input" placeholder="Имя" name="name"
                     minlength="2" maxlength="40" required>
                 <span class="popup__form-error popup__name-error"></span>
 
-                <input type="text" id="popup__about" class="popup__input" placeholder="О себе" name="popup__about"
+                <input type="text" id="popup__about" class="popup__input" placeholder="О себе" name="description"
                     minlength="2" maxlength="200" required>
                 <span class="popup__form-error popup__about-error"></span>
 
@@ -68,12 +67,12 @@
             <h2 class="popup__edit-prof">Новое место</h2>
             <form class="popup__form" name='popup-add-card' novalidate>
 
-                <input type="text" id="popup__title" class="popup__input" placeholder="Название" name="popup__name"
+                <input type="text" id="popup__title" class="popup__input" placeholder="Название" name="name"
                     minlength="2" maxlength="30" required>
                 <span class="popup__form-error popup__title-error"></span>
 
                 <input type="url" id="popup__pic-link" class="popup__input" placeholder="Ссылка на картинку"
-                    name="popup__about" required>
+                    name="link" required>
                 <span class="popup__form-error popup__pic-link-error"></span>
 
                 <button type="submit" class="popup__submit-btn">Сохранить</button>
@@ -87,9 +86,6 @@
             <button class="image-popup__close-btn popup__close" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
-    <script src="./scripts/Card.js" type="module"></script>
-    <script src="./scripts/FormValidator.js" type="module"></script>
-    <script src="./scripts/index.js" type="module"></script>
 </body>
 
 </html>
