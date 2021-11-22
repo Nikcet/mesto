@@ -1,21 +1,17 @@
 import Popup from './Popup.js';
-import { popupImageIdSelector, imagePopupSelector, descriptionPopupSelector } from './constants.js';
+import { popupImageIdSelector } from './constants.js';
 
 class PopupWithImage extends Popup {
+    // Вообще весь не нужен
     constructor(popupSelector) {
         super(popupSelector);
-        this.popupSelector = document.querySelector(popupImageIdSelector);
+        this.popupSelector = document.querySelector(popupImageIdSelector); // Не нужен
     }
 
-    open(event) {
-        this._imagePopup = this.popupSelector.querySelector(imagePopupSelector);
-        this._descrPopup = this.popupSelector.querySelector(descriptionPopupSelector);
-        this._imagePopup.src = event.target.src;
-        this._imagePopup.alt = event.target.alt;
-        this._descrPopup.textContent = event.target.alt;
-
-        super.open();
-        super.setEventListeners();
+    // Открывает попап изображения
+    open() {
+        super.open(); // нафиг
+        super.setEventListeners(); // вызываем в index.js
     }
 }
 
