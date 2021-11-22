@@ -12,10 +12,13 @@ const profileDescription = document.querySelector('.profile__description');
 const nameInput = document.querySelector('#popup__name');
 const descriptionInput = document.querySelector('#popup__about');
 
-const formSelector = '.popup__form';
-const inputSelector = '.popup__input';
+const formQuerySelector = '.popup__form';
+const inputQuerySelector = '.popup__input';
 
 const KEY_CODE = 'Escape';
+
+const popupOpenedClassSelector = 'popup_opened';
+const popupCloseQuerySelector = '.popup__close'
 
 const popupImageIdSelector = '#popupImage';
 const imagePopupSelector = '.image-popup__image';
@@ -29,13 +32,15 @@ export {
     popupAddCard,
     popupEditProfile,
     KEY_CODE,
-    inputSelector,
-    formSelector,
+    inputQuerySelector,
+    formQuerySelector,
     profileName,
     profileDescription,
     popupImageIdSelector,
     imagePopupSelector,
     descriptionPopupSelector,
     nameInput,
-    descriptionInput
+    descriptionInput,
+    popupOpenedClassSelector,
+    popupCloseQuerySelector,
 };
