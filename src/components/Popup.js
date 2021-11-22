@@ -1,8 +1,12 @@
-import { KEY_CODE, popupOpenedClassSelector, popupCloseQuerySelector } from '../scripts/constants.js';
+import {
+    KEY_CODE,
+    popupOpenedClassSelector,
+    popupCloseQuerySelector,
+} from '../scripts/constants.js';
 
 export default class Popup {
-    constructor(popupSelector) {
-        this._currentPopup = popupSelector;
+    constructor(popup) {
+        this._currentPopup = popup;
         this._popupClose = this._currentPopup.querySelector(popupCloseQuerySelector);
     }
 
@@ -33,4 +37,5 @@ export default class Popup {
     _handleEscClose = (event) => {
         if (event.key === KEY_CODE) this.close();
     }
+
 }
