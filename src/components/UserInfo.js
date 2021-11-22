@@ -4,6 +4,7 @@ export default class UserInfo {
         this._description = description;
     }
 
+    // Возвращает объект с информацией(канал во внешний мир от объекта)
     getUserInfo() {
         return {
             name: this._name.textContent,
@@ -11,6 +12,7 @@ export default class UserInfo {
         }
     }
 
+    // Вставляет информацию(канал во внутрь объекта)
     setUserInfo(name, description) {
         this._name.textContent = name;
         this._description.textContent = description;
