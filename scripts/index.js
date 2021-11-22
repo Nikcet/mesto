@@ -38,14 +38,17 @@ imagePopup.setEventListeners();
 
 const userInfo = new UserInfo(profileName, profileDescription);
 
+// Колбек формы редактирования профиля
 function profileFormSubmit({ name, description }) {
     userInfo.setUserInfo(name, description);
 }
 
+// Колбек сабмита формы добавления карточек
 function cardFormSubmit(data) {
     section.addItem(createCard(data));
 }
 
+// Создает разметку карточки
 function createCard(item) {
     return new Card({ item, handleCardClick }, elems).createCard();
 };
@@ -69,13 +72,6 @@ addButton.addEventListener('click', () => {
     validationAddCardForm.enableValidation();
 });
 
-// Переключение состояния кнопки
-function toggleButtonState(popup) {
-    const button = popup.querySelector('.popup__submit-btn');
-
-    button.disabled = true;
-    button.classList.add('popup__submit-btn_disabled');
-}
 
 // Заполняет попап картинки данными
 function handleCardClick(data) {
@@ -89,15 +85,24 @@ function handleCardClick(data) {
     imagePopup.open();
 }
 
+// Рисует карточку в DOMе
 function renderer(item) {
     let card = createCard(item);
     section.addItem(card);
 }
 
-// Очищает форму добавления карточки во время ее открытия
+// ИЗМЕНИТЬ !!!!!Очищает форму добавления карточки во время ее открытия!!!!!
 function clearDatasFromPopup(form) {
     const inputList = form.querySelectorAll('.popup__input');
     inputList.forEach(function (inputItem) {
         inputItem.value = '';
     })
+}
+
+// ИЗМЕНИТЬ !!!!!Переключение состояния кнопки!!!!!
+function toggleButtonState(popup) {
+    const button = popup.querySelector('.popup__submit-btn');
+
+    button.disabled = true;
+    button.classList.add('popup__submit-btn_disabled');
 }
