@@ -21,8 +21,15 @@ const popupOpenedClassSelector = 'popup_opened';
 const popupCloseQuerySelector = '.popup__close'
 
 const popupImageIdSelector = '#popupImage';
-const imagePopupSelector = '.image-popup__image';
+const imagePopupQuerySelector = '.image-popup__image';
 const descriptionPopupSelector = '.image-popup__description';
+
+const heartQuerySelector = '.elements__heart';
+const deleteQuerySelector = '.elements__delete';
+const imageQuerySelector = '.elements__image';
+
+const elementsImageQuerySelector = '.elements__image';
+const elementsNameQuerySelector = '.elements__name';
 
 
 export {
@@ -37,10 +44,15 @@ export {
     profileName,
     profileDescription,
     popupImageIdSelector,
-    imagePopupSelector,
+    imagePopupQuerySelector,
     descriptionPopupSelector,
     nameInput,
     descriptionInput,
     popupOpenedClassSelector,
     popupCloseQuerySelector,
+    heartQuerySelector,
+    deleteQuerySelector,
+    imageQuerySelector,
+    elementsImageQuerySelector,
+    elementsNameQuerySelector,
 };
