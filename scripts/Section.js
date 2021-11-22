@@ -5,12 +5,14 @@ class Section {
         this._containerSelector = containerSelector;
     }
 
+    // Рисует карточки из массива
     renderItems() {
         this._items.forEach(item => {
-            this.addItem(this.renderer(item));
+            this.renderer(item);
         });
     }
 
+    // Добавляет карточку в DOM
     addItem(element) {
         this._containerSelector.prepend(element);
     }
