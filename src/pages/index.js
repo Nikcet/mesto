@@ -22,10 +22,7 @@ import {
 } from "../scripts/constants.js";
 
 // Формы
-const validationProfileForm = new FormValidator(
-    validationConfig,
-    popupEditProfile
-);
+const validationProfileForm = new FormValidator(validationConfig, popupEditProfile);
 validationProfileForm.enableValidation();
 const validationAddCardForm = new FormValidator(validationConfig, popupAddCard);
 validationAddCardForm.enableValidation();
@@ -66,11 +63,13 @@ editButton.addEventListener("click", () => {
     const data = userInfo.getUserInfo();
     nameInput.value = data.name;
     descriptionInput.value = data.description;
+    validationProfileForm.resetValidation();
 });
 
 // Кнопка добаления новых карточек
 addButton.addEventListener("click", () => {
     addCardPopup.open();
+    validationAddCardForm.resetValidation();
 });
 
 // Колбэк класса попапа с картинкой - открывает модальное окно с изображением
