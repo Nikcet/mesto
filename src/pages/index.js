@@ -1,13 +1,13 @@
-import './index.css';
-import initialCards from '../scripts/initialCards.js';
-import Card from '../components/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import validationConfig from '../scripts/validationConfig.js';
-import Section from '../components/Section.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js'
-import UserInfo from '../components/UserInfo.js';
-import LocalImages from '../scripts/LocalImages.js';
+import "./index.css";
+import initialCards from "../scripts/initialCards.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import validationConfig from "../scripts/validationConfig.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import LocalImages from "../scripts/LocalImages.js";
 import {
     elems,
     editButton,
@@ -19,11 +19,13 @@ import {
     nameInput,
     descriptionInput,
     popupImage,
-} from '../scripts/constants.js';
+} from "../scripts/constants.js";
 
 // Формы
 const validationProfileForm = new FormValidator(validationConfig, popupEditProfile);
+validationProfileForm.enableValidation();
 const validationAddCardForm = new FormValidator(validationConfig, popupAddCard);
+validationAddCardForm.enableValidation();
 
 // Разметка и отрисовка дефолтных карточек
 const section = new Section(initialCards, renderer, elems);
@@ -53,21 +55,21 @@ function cardFormSubmit(data) {
 // Создает разметку карточки
 function createCard(item) {
     return new Card({ item, handleCardClick }, elems).createCard();
-};
+}
 
 // Кнопка редактирования профиля
-editButton.addEventListener('click', () => {
+editButton.addEventListener("click", () => {
     editProfilePopup.open();
-    let data = userInfo.getUserInfo();
+    const data = userInfo.getUserInfo();
     nameInput.value = data.name;
     descriptionInput.value = data.description;
-    validationProfileForm.enableValidation();
+    validationProfileForm.resetValidation();
 });
 
 // Кнопка добаления новых карточек
-addButton.addEventListener('click', () => {
+addButton.addEventListener("click", () => {
     addCardPopup.open();
-    validationAddCardForm.enableValidation();
+    validationAddCardForm.resetValidation();
 });
 
 // Колбэк класса попапа с картинкой - открывает модальное окно с изображением
@@ -77,7 +79,7 @@ function handleCardClick(data) {
 
 // Рисует карточку в DOMе
 function renderer(item) {
-    let card = createCard(item);
+    const card = createCard(item);
     section.addItem(card);
 }
 

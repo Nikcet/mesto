@@ -10,13 +10,6 @@ export default class PopupWithForm extends Popup {
         this._inputValues = {};
     }
 
-    // Открывает попап с формой
-    open() {
-        super.open();
-        this._deleteDatasFromPopupForm();
-        this._toggleButtonState();
-    }
-
     // Закрывает попап с формой
     close() {
         this._form.reset();
@@ -41,14 +34,6 @@ export default class PopupWithForm extends Popup {
             }
         })
         return this._inputValues;
-    }
-
-    // Удаляет данные из полей ввода
-    _deleteDatasFromPopupForm() {
-        this._inputList = this._form.querySelectorAll(inputQuerySelector);
-        this._inputList.forEach(inputItem => {
-            inputItem.value = '';
-        })
     }
 
     // Переключает кнопку в выключенное состояние
