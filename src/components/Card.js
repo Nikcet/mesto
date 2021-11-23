@@ -36,6 +36,13 @@ class Card {
         this._cardTemplateImage.alt = this._name;
         this._cardTemplateName.textContent = this._name;
 
+        // Навешивает слушатели
+        this._setEventListeners();
+
+        return this._cardTemplate;
+    }
+
+    _setEventListeners() {
         // Лайк
         this._cardElement.querySelector(heartQuerySelector).addEventListener('click', this._setLike);
 
@@ -44,13 +51,13 @@ class Card {
 
         // Попап изображения
         this._cardElement.querySelector(imageQuerySelector).addEventListener('click', () => this.handleCardClick(this._item));
-
-        return this._cardTemplate;
     }
+
     // Лайк
     _setLike(event) {
         event.target.classList.toggle('elements__heart_active');
     }
+
     // Удаление
     _deleteCard(event) {
         event.target.closest('.elements__card').remove();
