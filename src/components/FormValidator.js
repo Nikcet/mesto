@@ -14,25 +14,33 @@ export default class FormValidator {
         this._setEventListener();
     }
 
+    // Сбрасыевает валидацию формы
+    resetValidation() {
+        this._toggleButtonState();
+        this._inputList.forEach(input => {
+            this._hideInputError(input);
+        })
+    }
+
     // Устанавливает слушатель события input на поле
     _setEventListener = () => {
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState();
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState(this._inputList, this._buttonElement);
+                this._toggleButtonState();
             })
         })
     };
 
     // Переключает кнопку из активного состояния в неактивное и обратно
-    _toggleButtonState = (inputList, button) => {
-        if (this._hasInvalidInput(inputList)) {
-            button.disabled = true;
-            button.classList.add(this.config.inactiveButtonClass);
+    _toggleButtonState = () => {
+        if (this._hasInvalidInput(this._inputList)) {
+            this._buttonElement.disabled = true;
+            this._buttonElement.classList.add(this.config.inactiveButtonClass);
         } else {
-            button.disabled = false;
-            button.classList.remove(this.config.inactiveButtonClass);
+            this._buttonElement.disabled = false;
+            this._buttonElement.classList.remove(this.config.inactiveButtonClass);
         }
     }
 
@@ -52,7 +60,6 @@ export default class FormValidator {
         }
     };
 
-
     // Функция, которая добавляет класс с ошибкой
     _showInputError = (element, errorMessage) => {
         this._errorElement = this.form.querySelector(`.${element.id}-error`);
@@ -63,9 +70,9 @@ export default class FormValidator {
 
     // Функция, которая удаляет класс с ошибкой
     _hideInputError = (element) => {
-        const errorElement = this.form.querySelector(`.${element.id}-error`);
+        this._errorElement = this.form.querySelector(`.${element.id}-error`);
         element.classList.remove(this.config.inputErrorClass);
-        errorElement.classList.remove(`${element.id}-error_active`);
-        errorElement.textContent = '';
+        this._errorElement.classList.remove(`${element.id}-error_active`);
+        this._errorElement.textContent = '';
     };
 }
