@@ -1,8 +1,8 @@
 class Section {
-    constructor(items, renderer, containerSelector) {
+    constructor(items, renderer, container) {
         this._items = items;
         this.renderer = renderer;
-        this._containerSelector = containerSelector;
+        this._container = container;
     }
 
     // Рисует карточки из массива
@@ -14,7 +14,7 @@ class Section {
 
     // Добавляет карточку в DOM
     addItem(element) {
-        this._containerSelector.prepend(element);
+        this._container.prepend(element);
     }
 }
 
