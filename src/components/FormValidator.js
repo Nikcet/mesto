@@ -2,6 +2,8 @@ export default class FormValidator {
     constructor(config, form) {
         this.config = config;
         this.form = form;
+        this._inputList = Array.from(this.form.querySelectorAll(this.config.inputSelector));
+        this._buttonElement = this.form.querySelector(this.config.submitButtonSelector);
     }
 
     // Запускает процесс валидации форм
@@ -9,19 +11,16 @@ export default class FormValidator {
         this.form.addEventListener('submit', (event) => {
             event.preventDefault();
         })
-        this._setEventListener(this.form, this.config);
+        this._setEventListener();
     }
 
     // Устанавливает слушатель события input на поле
     _setEventListener = () => {
-        const inputList = Array.from(this.form.querySelectorAll(this.config.inputSelector));
-        const buttonElement = this.form.querySelector(this.config.submitButtonSelector);
-
-        this._toggleButtonState(inputList, buttonElement);
-        inputList.forEach((inputElement) => {
+        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._isValid(inputElement);
-                this._toggleButtonState(inputList, buttonElement);
+                this._toggleButtonState(this._inputList, this._buttonElement);
             })
         })
     };
@@ -56,10 +55,10 @@ export default class FormValidator {
 
     // Функция, которая добавляет класс с ошибкой
     _showInputError = (element, errorMessage) => {
-        const errorElement = this.form.querySelector(`.${element.id}-error`);
+        this._errorElement = this.form.querySelector(`.${element.id}-error`);
         element.classList.add(this.config.inputErrorClass);
-        errorElement.textContent = errorMessage;
-        errorElement.classList.add(`${element.id}-error_active`);
+        this._errorElement.textContent = errorMessage;
+        this._errorElement.classList.add(`${element.id}-error_active`);
     };
 
     // Функция, которая удаляет класс с ошибкой
