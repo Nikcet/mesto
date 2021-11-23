@@ -17,14 +17,14 @@ export default class Popup {
     }
 
     // Закрывает попап
-    close = () => {
+    close() {
         this._currentPopup.classList.remove(popupOpenedClassSelector);
         document.removeEventListener('keydown', this._handleEscClose);
     }
 
     // Вешает слушатели кликов по крестовине и оверлею на попап
     setEventListeners() {
-        this._popupClose.addEventListener('click', this.close);
+        this._popupClose.addEventListener('click', () => this.close());
         this._currentPopup.addEventListener('click', this._closePopup);
     }
 
