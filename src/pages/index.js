@@ -79,8 +79,7 @@ function handleCardClick(data) {
 
 // Рисует карточку в DOMе
 function renderer(item) {
-    const card = createCard(item);
-    section.addItem(card);
+    section.addItem(createCard(item));
 }
 
 // Вставляет локальные изображения в DOM
