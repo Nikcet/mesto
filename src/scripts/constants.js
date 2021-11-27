@@ -8,6 +8,7 @@ const popupAddCard = document.querySelector('#add-card');
 
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
+const profileAvatar = document.querySelector('.profile__avatar');
 
 const nameInput = document.querySelector('#popup__name');
 const descriptionInput = document.querySelector('#popup__about');
@@ -45,6 +46,7 @@ export {
     formQuerySelector,
     profileName,
     profileDescription,
+    profileAvatar,
     popupImageIdSelector,
     imagePopupQuerySelector,
     descriptionPopupSelector,
