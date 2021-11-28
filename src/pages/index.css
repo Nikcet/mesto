@@ -23,6 +23,8 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__info-elems/profile__info-elems.css);
 @import url(../blocks/profile/__info-wrap/profile__info-wrap.css);
+@import url(../blocks/profile/__avatar-overley/profile__avatar-overley.css);
+@import url(../blocks/profile/__avatar-edit-btn/profile__avatar-edit-btn.css);
 /* Конец profile */
 
 /* Начало elements */
@@ -31,6 +33,8 @@
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__delete/elements__delete.css);
 @import url(../blocks/elements/__heart/elements__heart.css);
+@import url(../blocks/elements/__heart-wrap/elements__heart-wrap.css);
+@import url(../blocks/elements/__heart-number/elements__heart-number.css);
 @import url(../blocks/elements/__heart/_active/elements__heart_active.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__name/elements__name.css);
@@ -53,7 +57,7 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/__submit-btn/_disabled/popup__submit-btn_disabled.css);
-@import url(../blocks/popup/__edit-prof/popup__edit-prof.css);
+@import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__close/popup__close.css);
@@ -63,6 +67,9 @@
 @import url(../blocks/popup/__title-error/_active/popup__title-error_active.css);
 @import url(../blocks/popup/__pic-link-error/_active/popup__pic-link-error_active.css);
 /* Конец edit-form */
+
+@import url(../blocks/popup/__question/popup__question.css);
+@import url(../blocks/popup/__delete-btn/popup__delete-btn.css);
 
 /* Начало footer */
 
