@@ -1,7 +1,8 @@
 export default class UserInfo {
-    constructor(name, description) {
+    constructor(name, description, avatar) {
         this._name = name;
         this._description = description;
+        this._avatar = avatar;
     }
 
     // Возвращает объект с информацией(канал во внешний мир от объекта)
@@ -16,5 +17,11 @@ export default class UserInfo {
     setUserInfo(name, description) {
         this._name.textContent = name;
         this._description.textContent = description;
+    }
+
+    // Вставляет аватар
+    setAvatar(avatar) {
+        this._avatar.src = avatar;
+        this._avatar.alt = `Фото: ${this._name}`;
     }
 }
