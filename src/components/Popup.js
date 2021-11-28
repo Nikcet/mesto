@@ -8,12 +8,15 @@ export default class Popup {
     constructor(popup) {
         this._currentPopup = popup;
         this._popupClose = this._currentPopup.querySelector(popupCloseQuerySelector);
+        this._button = this._currentPopup.querySelector('.popup__submit-btn');
+
     }
 
     // Открывает попап
     open() {
         this._currentPopup.classList.add(popupOpenedClassSelector);
         document.addEventListener('keydown', this._handleEscClose);
+        this.loading(false);
     }
 
     // Закрывает попап
@@ -36,6 +39,13 @@ export default class Popup {
     // Закрывает попап ко нажатию на клавишу Esc
     _handleEscClose = (event) => {
         if (event.key === KEY_CODE) this.close();
+    }
+
+    // Отображает процесс сохранения
+    loading = (isLoading) => {
+        isLoading
+            ? this._button.textContent = 'Сохранение...'
+            : this._button.textContent = 'Сохранить';
     }
 
 }
