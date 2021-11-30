@@ -28,6 +28,7 @@ export default class PopupWithForm extends Popup {
     // Собирает данные из полей ввода
     _getInputValues = () => {
         this._inputList.forEach(item => {
+            // Проверяет, есть ли вообще хоть какая-то информация в полях, чтобы не добавлять undefined'ы в список
             if (item.value.length > 0) {
                 this._inputValues[item.name] = item.value;
             }
