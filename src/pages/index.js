@@ -107,8 +107,10 @@ editAvatarButton.addEventListener("click", () => {
 // Колбек формы редактирования профиля
 function profileFormSubmit({ name, description }) {
     editProfilePopup.loading(true);
-    userInfo.setUserInfo(name, description);
     api.sendProfileDatasToServer(name, description)
+        .then(() => {
+            userInfo.setUserInfo(name, description);
+        })
         .catch(err => {
             console.log('Не удалось загрузить данные в профиль. ', err);
         })
@@ -156,12 +158,18 @@ function handleDeleteClick(cardData) {
 
 // Удаляет карточку с сервера и из DOMа
 function deleteCardResolver(cardData) {
+    questionPopup.loading(true);
     api.deleteCard(cardData.id)
+        .then(() => {
+            cardData.deleteCard();
+        })
         .catch(err => {
             console.log('Что-то пошло не так с удалениями: ', err)
+        })
+        .finally(() => {
+            questionPopup.loading(false);
+            questionPopup.close();
         });
-    cardData.deleteCard();
-    questionPopup.close();
 }
 
 // Колбэк класса попапа с картинкой - открывает модальное окно с изображением
